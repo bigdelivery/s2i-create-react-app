@@ -37,7 +37,6 @@ RUN mkdir /.config && chown -R 1001:1001 /.config && \
     chmod 755 /etc/nginx/conf.d && \
     chmod 644 /etc/nginx/conf.d/default.conf
 
-RUN chmod a+xrw -R /usr/share/elasticsearch
 # Set to non root user provided by parent image
 USER 1001
 
