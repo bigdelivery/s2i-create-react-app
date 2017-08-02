@@ -30,11 +30,14 @@ COPY ./etc/nginx.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir /.config && chown -R 1001:1001 /.config && \
     mkdir /.cache && chown -R 1001:1001 /.cache && \
-    chmod -R 777 /var/log/nginx /var/cache/nginx/ /var/run \
-    && chmod a+xrw -R /etc/nginx/* \
-    && chmod 755 /etc/nginx/conf.d \
-    && chmod 644 /etc/nginx/conf.d/default.conf
+    chmod -R 777 /var/log/nginx /var/cache/nginx/ /var/run && \
+    mkdir -p /etc/nginx/cache && \
+    chmod a+xrw -R /etc/nginx/cache && \
+    chmod 644 /etc/nginx/* && \
+    chmod 755 /etc/nginx/conf.d && \
+    chmod 644 /etc/nginx/conf.d/default.conf
 
+RUN chmod a+xrw -R /usr/share/elasticsearch
 # Set to non root user provided by parent image
 USER 1001
 
